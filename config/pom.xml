@@ -15,7 +15,7 @@
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2021.0.5</spring-cloud.version>
-		<docker.image.prefix>order-alert</docker.image.prefix>
+		<docker.image.prefix>base-microservices-config</docker.image.prefix>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -26,7 +26,7 @@
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-config-server</artifactId>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>

@@ -1,0 +1,17 @@
+version: "3.8"
+services:
+  base-microservices-config:
+    image: base-microservices-config/config:0.0.1-SNAPSHOT
+    ports:
+      - "8001:8001"
+    environment:
+       - "SPRING_PROFILES_ACTIVE=dev"
+  base-microservices-test-service:
+    image: base-microservices-test-service/test-service:0.0.1-SNAPSHOT
+    ports:
+      - "8002:8002"
+    environment:
+       - "SPRING_PROFILES_ACTIVE=dev"
+    depends_on:
+      base-microservices-config:
+        condition: service_healthy

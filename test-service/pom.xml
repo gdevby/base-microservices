@@ -15,7 +15,7 @@
 	<properties>
 		<java.version>17</java.version>
 		<spring-cloud.version>2021.0.5</spring-cloud.version>
-		<docker.image.prefix>test-service</docker.image.prefix>
+		<docker.image.prefix>base-microservices-test-service</docker.image.prefix>
 	</properties>
 	<dependencies>
 		<dependency>

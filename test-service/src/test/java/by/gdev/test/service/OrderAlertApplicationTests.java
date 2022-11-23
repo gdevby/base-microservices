@@ -1,4 +1,4 @@
-package by.gdev.alert;
+package by.gdev.test.service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
