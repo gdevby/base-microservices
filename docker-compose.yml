@@ -6,8 +6,8 @@ services:
       - "8001:8001"
     environment:
        - "SPRING_PROFILES_ACTIVE=dev"
-  base-microservices-test-service:
-    image: base-microservices-test-service/test-service:0.0.1-SNAPSHOT
+  base-microservices-eureka:
+    image: base-microservices-eureka/eureka:0.0.1-SNAPSHOT
     ports:
       - "8002:8002"
     environment:
@@ -15,3 +15,15 @@ services:
     depends_on:
       base-microservices-config:
         condition: service_healthy
+  base-microservices-test-service:
+    image: base-microservices-test-service/test-service:0.0.1-SNAPSHOT
+    ports:
+      - "8003:8003"
+    environment:
+       - "SPRING_PROFILES_ACTIVE=dev"
+    depends_on:
+      base-microservices-config:
+        condition: service_healthy
+      base-microservices-eureka:
+        condition: service_healthy
+  
