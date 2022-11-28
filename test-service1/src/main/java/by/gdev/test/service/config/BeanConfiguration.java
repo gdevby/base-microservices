@@ -15,13 +15,8 @@ import by.gdev.test.service.service.AppHandler;
 @EnableScheduling
 public class BeanConfiguration {
 	@Bean
-	ApplicationProperty applicationPropertyCreate() {
-		return new ApplicationProperty();
-	};
-
-	@Bean
 	RouterFunction<ServerResponse> routs(AppHandler handler) {
-		return RouterFunctions.route().GET("/message", handler::message).build();
+		return RouterFunctions.route().GET("/testbalancer", handler::testBalancer).build();
 	}
 
 	@Bean

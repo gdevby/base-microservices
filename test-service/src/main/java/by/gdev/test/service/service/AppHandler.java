@@ -1,7 +1,6 @@
 package by.gdev.test.service.service;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
 
@@ -14,14 +13,8 @@ import reactor.core.publisher.Mono;
 public class AppHandler {
 
 	private final ApplicationProperty property;
-	private final WebClient.Builder loadBalancedWebClientBuilder;
 
 	public Mono<ServerResponse> message(ServerRequest request) {
 		return ServerResponse.ok().bodyValue(property.getTest());
-	}
-
-	public Mono<ServerResponse> testBalancer(ServerRequest request) {
-		return ServerResponse.ok().bodyValue(loadBalancedWebClientBuilder.build().get()
-				.uri("http://test-service/message").retrieve().bodyToMono(String.class));
 	}
 }

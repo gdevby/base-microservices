@@ -26,4 +26,14 @@ services:
         condition: service_healthy
       base-microservices-eureka:
         condition: service_healthy
-  
+  base-microservices-test-service1:
+    image: base-microservices-test-service1/test-service1:0.0.1-SNAPSHOT
+    ports:
+      - "8004:8004"
+    environment:
+       - "SPRING_PROFILES_ACTIVE=dev"
+    depends_on:
+      base-microservices-config:
+        condition: service_healthy
+      base-microservices-eureka:
+        condition: service_healthy
