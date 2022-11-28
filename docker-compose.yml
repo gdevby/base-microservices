@@ -37,3 +37,14 @@ services:
         condition: service_healthy
       base-microservices-eureka:
         condition: service_healthy
+  base-microservices-gateway:
+    image: base-microservices-gateway/gateway:0.0.1-SNAPSHOT
+    ports:
+      - "8005:8005"
+    environment:
+       - "SPRING_PROFILES_ACTIVE=dev"
+    depends_on:
+      base-microservices-config:
+        condition: service_healthy
+      base-microservices-eureka:
+        condition: service_healthy
