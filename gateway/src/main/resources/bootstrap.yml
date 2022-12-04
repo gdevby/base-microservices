@@ -1,0 +1,33 @@
+eureka:
+  client:
+    fetchRegistry: false
+    registerWithEureka: false
+server:
+  port: 8005
+spring:
+  application:
+    name: gateway
+  cloud:
+    config:
+      uri: http://base-microservices-config:8001
+    loadbalancer:
+      ribbon: false
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://base-microservices-keycloak:8080/realms/myrealm/protocol/openid-connect/certs
+      client:
+        provider:
+          my-keycloak-provider:
+            issuer-uri: http://base-microservices-keycloak:8080/realms/myrealm
+        registration:
+          keycloak-spring-gateway-client:
+            provider: my-keycloak-provider
+            scope: openid
+            client-id: client-test-service
+            client-secret: 0T1oDiRDnb18geE1KvD9KSVX6eBlV2AD
+            authorization-grant-type: authorization_code
+            redirect-uri: http://base-microservices-keycloak:8080/login/oauth2/code/keycloak
+  profiles:
+    active: dev  
