@@ -48,3 +48,11 @@ services:
         condition: service_healthy
       base-microservices-eureka:
         condition: service_healthy
+  base-microservices-keycloak:
+    image: gdev.by/keycloak:0.1
+    #restart: always
+    command:
+      - "start-dev"
+    ports:
+      - "8080:8080"  
+  
