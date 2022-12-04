@@ -21,7 +21,8 @@ public class BeanConfiguration {
 
 	@Bean
 	RouterFunction<ServerResponse> routs(AppHandler handler) {
-		return RouterFunctions.route().GET("/message", handler::message).build();
+		return RouterFunctions.route().GET("/public/message", handler::message)
+				.GET("/secure/message", handler::secureMessage).build();
 	}
 
 	@Bean
@@ -29,4 +30,5 @@ public class BeanConfiguration {
 	public WebClient.Builder lbWebClient() {
 		return WebClient.builder();
 	}
+
 }
